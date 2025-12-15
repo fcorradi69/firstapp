@@ -57,6 +57,7 @@ button {
   background-color: var(--button-background-color);
   color: var(--color-over);
   border: 1px solid var(--button-border-color);
+  border-radius: 5px;
   min-width: 85px;
   padding: 10px 5px;
 
