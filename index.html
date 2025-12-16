@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <title>firstapp</title>
 </head>
@@ -15,8 +17,16 @@
     <button>Start first app</button>
     <div id="counter" style="font-size: 1.5 rem;"></div>
   </main>
-  
+
   <script src="app.js"></script>
+  <script>
+    // Registra il service worker (necessario perché Chrome la consideri installabile) 
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').catch(err => console.log('SW registration failed:', err));
+      });
+    } 
+  </script>
 </body>
 
 </html>
