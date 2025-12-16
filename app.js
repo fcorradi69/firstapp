@@ -8,6 +8,7 @@ startbutton.addEventListener("click", e => {
     showcounter();
 });
 
+// Show counter
 function showcounter(){
     const value = localStorage.getItem("firstapp.counter");
     if(value) counter = Number(value);
