@@ -59,7 +59,7 @@ button {
   border: 1px solid var(--button-border-color);
   border-radius: 5px;
   min-width: 85px;
-  padding: 10px 5px;
+  padding: 5px 10px;
 
   &:hover {
     cursor: pointer;
