@@ -35,12 +35,12 @@ h1, h2, h3 {
   margin: 0px;
   padding: 0px;
   font-weight: 400;
-  letter-spacing: 0.25rem;
+  letter-spacing: 0.15rem;
 }
 
 h1 {
   font-weight: 300;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.25rem;
 }
 
 button {
@@ -59,6 +59,7 @@ button {
   border: 1px solid var(--button-border-color);
   border-radius: 5px;
   min-width: 85px;
+  letter-spacing: 0.05rem;
   padding: 10px;
 
   &:hover {
