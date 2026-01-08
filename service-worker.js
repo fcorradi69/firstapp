@@ -33,11 +33,46 @@ self.addEventListener('activate', event => {
   //event.waitUntil(self.clients.claim());
 });
 
-// Fetch: rispondi dalla cache se possibile, altrimenti vai in rete
-self.addEventListener('fetch', event => {
+// Fetch: strategia cache-first (se manca rete, serve cache) 
+self.addEventListener('fetch', (event) => { 
   event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
-      return cachedResponse || fetch(event.request);
+    caches.match(event.request).then((cachedResponse) => {
+      // Se trovo nella cache, uso quello
+      if (cachedResponse)
+      {
+        return cachedResponse;
+      }
+      
+      // Altrimenti provo rete e (se va) metto in cache
+      return fetch(event.request)
+        .then((networkResponse) => {
+          // Non cachiamo richieste non valide
+          if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic')
+          {
+            return networkResponse;
+          }
+          
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+          
+          return networkResponse;
+        })
+        .catch(() => {
+          // Se anche la rete fallisce e non ho cache, potresti:
+          // - restituire una pagina offline personalizzata
+          // Per ora non restituiamo niente di speciale.
+        });
     })
   );
 });
+
+// Fetch: rispondi dalla cache se possibile, altrimenti vai in rete
+//self.addEventListener('fetch', event => {
+//  event.respondWith(
+//    caches.match(event.request).then(cachedResponse => {
+//      return cachedResponse || fetch(event.request);
+//    })
+//  );
+//});
