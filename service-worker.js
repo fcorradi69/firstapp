@@ -18,7 +18,19 @@ self.addEventListener('install', event => {
 
 // Activate: pulizia cache vecchie (qui semplice)
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys().then(keys => 
+      Promise.all(
+        keys.map(key => { 
+          if (key !== CACHE_NAME) 
+          { 
+            return caches.delete(key); 
+          } 
+        }) 
+      ) 
+    ) 
+  );
+  //event.waitUntil(self.clients.claim());
 });
 
 // Fetch: rispondi dalla cache se possibile, altrimenti vai in rete
