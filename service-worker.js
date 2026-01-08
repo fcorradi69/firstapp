@@ -5,7 +5,7 @@ const ASSETS_TO_CACHE = [
   '/style.css',
   '/app.js',
   '/service-worker.js',
-  '/manifest.webmanifest',
+  '/manifest.json',
   '/images/icon-192.png',
   '/images/icon-512.png'
 ];
