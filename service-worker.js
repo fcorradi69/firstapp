@@ -1,13 +1,12 @@
 const CACHE_NAME = 'simple-pwa-v1';
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/app.js',
-  '/service-worker.js',
-  '/manifest.json',
-  '/images/icon-192.png',
-  '/images/icon-512.png'
+  'index.html',
+  'style.css',
+  'app.js',
+  'service-worker.js',
+  'manifest.json',
+  'images/icon-192.png',
+  'images/icon-512.png'
 ];
 
 // Install: cache dei file base
