@@ -23,7 +23,7 @@
     // Registra il service worker (necessario perché Chrome la consideri installabile) 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').catch(err => console.log('SW registration failed:', err));
+        navigator.serviceWorker.register('service-worker.js').catch(err => console.log('SW registration failed:', err));
       });
     } 
   </script>
