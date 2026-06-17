@@ -1,6 +1,7 @@
 const startbutton = document.querySelector("button");
 let counter = 0;
 showcounter();
+//request
 
 startbutton.addEventListener("click", e => {
     counter++;
