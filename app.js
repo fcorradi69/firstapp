@@ -1,7 +1,7 @@
 const startbutton = document.querySelector("button");
 let counter = 0;
 showcounter();
-//
+
 startbutton.addEventListener("click", e => {
     counter++;
     localStorage.setItem("firstapp.counter", counter.toString());
